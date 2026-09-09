@@ -22,7 +22,7 @@ export default function App() {
   const [toast, setToast] = useState('')
   const guest = useMemo(() => {
     const value = new URLSearchParams(window.location.search).get('guest')
-    return value?.trim() || 'Quý khách'
+    return value?.trim() || 'Quý Khách'
   }, [])
 
   const notify = (message: string) => {
@@ -97,15 +97,13 @@ export default function App() {
           <div className="invitation-title-card">
             <p>Trân trọng kính mời</p>
             <h2>{guest}</h2>
-            <span>Đến dự bữa tiệc thân mật cùng gia đình chúng tôi</span>
+            <span>Đến dự bữa tiệc <strong>Báo Hỷ</strong> cùng gia đình chúng tôi</span>
           </div>
           <div className="invitation-names"><span>{wedding.groom.name}</span><b>&</b><span>{wedding.bride.name}</span></div>
         </section>
 
         <section className="event-section paper-section section-reveal">
-          <p className="section-kicker">SAVE OUR DATE</p>
-          <h2 className="editorial-title">Thiệp Mời</h2>
-          <p className="event-subtitle">Tham dự lễ báo hỷ {wedding.groom.name} & {wedding.bride.name}</p>
+          <h1 className="section-kicker">SAVE OUR DATE</h1>
           <Divider />
           <div className="event-date-layout">
             <div><span>18h00</span><small>Thứ Bảy</small></div>

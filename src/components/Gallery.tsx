@@ -3,6 +3,10 @@ import { createPortal } from 'react-dom'
 
 export function Gallery({ images }: { images: string[] }) {
   const [active, setActive] = useState<number | null>(null)
+  const columns = images.reduce<number[][]>((result, _image, index) => {
+    result[index % 2].push(index)
+    return result
+  }, [[], []])
 
   useEffect(() => {
     if (active === null) return
@@ -18,10 +22,14 @@ export function Gallery({ images }: { images: string[] }) {
   return (
     <>
       <div className="gallery-grid">
-        {images.map((image, index) => (
-          <button type="button" className={`gallery-image gallery-image-${index + 1}`} onClick={() => setActive(index)} key={image}>
-            <img src={image} alt={`Ảnh cưới ${index + 1}`} loading="lazy" />
-          </button>
+        {columns.map((column, columnIndex) => (
+          <div className="gallery-column" key={`column-${columnIndex}`}>
+            {column.map((index) => (
+              <button type="button" className="gallery-image" onClick={() => setActive(index)} key={images[index]}>
+                <img src={images[index]} alt={`Ảnh cưới ${index + 1}`} loading="lazy" />
+              </button>
+            ))}
+          </div>
         ))}
       </div>
       {active !== null && createPortal(
