@@ -6,8 +6,48 @@ export function AudioToggle({ musicUrl }: { musicUrl: string }) {
   const contextRef = useRef<AudioContext | null>(null)
   const timerRef = useRef<number | null>(null)
 
+  useEffect(() => {
+    if (!musicUrl) return
+
+    const audio = new Audio(musicUrl)
+    audio.loop = true
+    audio.volume = 0.45
+    audio.preload = 'auto'
+    audioRef.current = audio
+    let cancelled = false
+
+    const removeUnlockListeners = () => {
+      window.removeEventListener('pointerdown', unlock, true)
+      window.removeEventListener('touchstart', unlock, true)
+      window.removeEventListener('keydown', unlock, true)
+    }
+
+    const startMusic = async () => {
+      try {
+        await audio.play()
+        if (!cancelled) setPlaying(true)
+        removeUnlockListeners()
+      } catch {
+        if (!cancelled) setPlaying(false)
+      }
+    }
+
+    const unlock = () => void startMusic()
+
+    void startMusic()
+    window.addEventListener('pointerdown', unlock, true)
+    window.addEventListener('touchstart', unlock, true)
+    window.addEventListener('keydown', unlock, true)
+
+    return () => {
+      cancelled = true
+      removeUnlockListeners()
+      audio.pause()
+      audioRef.current = null
+    }
+  }, [musicUrl])
+
   useEffect(() => () => {
-    audioRef.current?.pause()
     if (timerRef.current) window.clearInterval(timerRef.current)
     void contextRef.current?.close()
   }, [])
