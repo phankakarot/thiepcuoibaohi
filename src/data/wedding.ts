@@ -32,7 +32,7 @@ export const wedding = {
     mapUrl: 'https://maps.app.goo.gl/CUSWZe3eUVoMC33W9',
   },
   schedule: [
-    { time: '17:00', label: 'Đón khách' },
+    { time: '18:00', label: 'Đón khách' },
     { time: '18:30', label: 'Khai tiệc' },
   ],
   quote:
