@@ -135,14 +135,6 @@ export default function App() {
           </div>
         </section>
 
-        <section className="gift-section section-reveal">
-          <div className="gift-ink" aria-hidden="true">&</div>
-          <p className="section-kicker">A LITTLE LOVE</p>
-          <h2 className="editorial-title">Gửi quà mừng</h2>
-          <p>Sự hiện diện của bạn là món quà quý giá nhất. Nếu ở xa, bạn có thể gửi chút yêu thương đến hai chúng mình.</p>
-          <button type="button" className="outline-button" onClick={() => setModal('gift')}>Mở hộp quà</button>
-        </section>
-
         <section className="album-section paper-section section-reveal">
           <p className="section-kicker">OUR MEMORIES</p>
           <h2 className="editorial-title">Album Ảnh Cưới</h2>
