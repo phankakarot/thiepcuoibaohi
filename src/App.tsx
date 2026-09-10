@@ -78,13 +78,13 @@ export default function App() {
           <div className="couple-cards">
             <article className="person-card bride-card">
               <div className="person-photo"><img src={wedding.bride.image} alt={wedding.bride.fullName} loading="lazy" /></div>
-              <p>Nhà Gái</p><h3>{wedding.bride.fullName}</h3>
+              <p>Cô Dâu</p><h3>{wedding.bride.fullName}</h3>
               <span>{wedding.bride.parents[0]}<br />{wedding.bride.parents[1]}</span>
               <small>{wedding.bride.hometown}</small>
             </article>
             <article className="person-card groom-card">
               <div className="person-photo"><img src={wedding.groom.image} alt={wedding.groom.fullName} loading="lazy" /></div>
-              <p>Nhà Trai</p><h3>{wedding.groom.fullName}</h3>
+              <p>Chú Rể</p><h3>{wedding.groom.fullName}</h3>
               <span>{wedding.groom.parents[0]}<br />{wedding.groom.parents[1]}</span>
               <small>{wedding.groom.hometown}</small>
             </article>
